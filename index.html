@@ -14,7 +14,6 @@
       href="https://fonts.googleapis.com/css2?family=Barlow+Condensed:ital,wght@0,600;0,700;0,800;1,800&family=Noto+Sans+SC:wght@400;500;600;700;900&display=swap"
       rel="stylesheet"
     />
-    <link rel="stylesheet" href="./styles.css" />
   </head>
   <body>
     <div class="noise" aria-hidden="true"></div>
@@ -77,16 +76,24 @@
         <div class="controller-map">
           <div class="direction-help">
             <div class="dpad-mini" aria-hidden="true">
-              <span>↑</span><span>↗</span><span>→</span><span>↘</span>
-              <span>↓</span><span>↙</span><span>←</span><span>↖</span>
+              <span>↑</span><span>↗</span><span>→</span><span>↘</span> <span>↓</span><span>↙</span
+              ><span>←</span><span>↖</span>
             </div>
             <p><strong>方向连续输入</strong><br />箭头按阅读顺序依次输入</p>
           </div>
           <div class="button-legend">
-            <div class="legend-item"><kbd class="xbox x">X</kbd><span><b>轻拳</b>轻攻击</span></div>
-            <div class="legend-item"><kbd class="xbox a">A</kbd><span><b>轻脚</b>轻踢击</span></div>
-            <div class="legend-item"><kbd class="xbox y">Y</kbd><span><b>重拳</b>重攻击</span></div>
-            <div class="legend-item"><kbd class="xbox b">B</kbd><span><b>重脚</b>重踢击</span></div>
+            <div class="legend-item">
+              <kbd class="xbox x">X</kbd><span><b>轻拳</b>轻攻击</span>
+            </div>
+            <div class="legend-item">
+              <kbd class="xbox a">A</kbd><span><b>轻脚</b>轻踢击</span>
+            </div>
+            <div class="legend-item">
+              <kbd class="xbox y">Y</kbd><span><b>重拳</b>重攻击</span>
+            </div>
+            <div class="legend-item">
+              <kbd class="xbox b">B</kbd><span><b>重脚</b>重踢击</span>
+            </div>
           </div>
         </div>
         <p class="notation-note">
@@ -105,7 +112,12 @@
               <circle cx="11" cy="11" r="6"></circle>
               <path d="m16 16 4 4"></path>
             </svg>
-            <input id="searchInput" type="search" placeholder="搜索角色或招式…" autocomplete="off" />
+            <input
+              id="searchInput"
+              type="search"
+              placeholder="搜索角色或招式…"
+              autocomplete="off"
+            />
             <kbd>/</kbd>
           </label>
         </div>
@@ -134,14 +146,23 @@
         </div>
 
         <div class="fighter-strip-wrap" id="stripWrap">
-          <button class="strip-arrow prev" id="prevFighter" type="button" aria-label="上一位角色">←</button>
+          <button class="strip-arrow prev" id="prevFighter" type="button" aria-label="上一位角色">
+            ←
+          </button>
           <div class="fighter-strip" id="fighterStrip" role="listbox" aria-label="格斗家列表"></div>
-          <button class="strip-arrow next" id="nextFighter" type="button" aria-label="下一位角色">→</button>
+          <button class="strip-arrow next" id="nextFighter" type="button" aria-label="下一位角色">
+            →
+          </button>
         </div>
 
         <div class="select-board" id="selectBoard" hidden aria-label="游戏选人屏布局">
           <div class="select-board-frame">
-            <div class="select-grid" id="selectGrid" role="listbox" aria-label="选人屏角色站位"></div>
+            <div
+              class="select-grid"
+              id="selectGrid"
+              role="listbox"
+              aria-label="选人屏角色站位"
+            ></div>
             <div class="hidden-row-label">隐藏 / 暴走角色</div>
             <div class="hidden-grid" id="hiddenGrid" role="listbox" aria-label="隐藏角色"></div>
           </div>
@@ -195,7 +216,6 @@
       <a href="#notation"><span>?</span>键位</a>
     </nav>
 
-    <script src="./fighters.js"></script>
-    <script src="./app.js"></script>
+    <script type="module" src="/src/main.ts"></script>
   </body>
 </html>
