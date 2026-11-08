@@ -1,0 +1,66 @@
+name: commitlint
+
+on:
+  pull_request:
+  push:
+    branches: [main]
+
+# 同一 PR 多次 push 时取消旧 run，节省 Actions 用量。
+concurrency:
+  group: commitlint-${{ github.workflow }}-${{ github.event.pull_request.number || github.ref }}
+  cancel-in-progress: true
+
+jobs:
+  commitlint:
+    runs-on: ubuntu-latest
+    permissions:
+      contents: read
+
+    steps:
+      # commitlint --from/--to 需要完整历史才能正确解析提交范围。
+      - name: Checkout
+        uses: actions/checkout@v7
+        with:
+          fetch-depth: 0
+
+      - name: Install pnpm
+        uses: pnpm/action-setup@v4
+
+      - name: Setup node
+        uses: actions/setup-node@v5
+        with:
+          node-version-file: .nvmrc
+          cache: pnpm
+
+      - name: Install dependencies
+        run: pnpm install --frozen-lockfile
+
+      - name: Validate PR commits
+        if: github.event_name == 'pull_request'
+        env:
+          COMMIT_FROM: ${{ github.event.pull_request.base.sha }}
+          COMMIT_TO: ${{ github.event.pull_request.head.sha }}
+        run: pnpm exec commitlint --from "$COMMIT_FROM" --to "$COMMIT_TO" --verbose
+
+      # 新建分支或删除 ref 时 before/after 会是 40 个 0。
+      # git 的 from..to 不包含 from，所以根提交要单独校验。
+      - name: Validate push commits
+        if: github.event_name == 'push'
+        env:
+          COMMIT_FROM: ${{ github.event.before }}
+          COMMIT_TO: ${{ github.event.after }}
+        run: |
+          ZERO="0000000000000000000000000000000000000000"
+          if [ "$COMMIT_TO" = "$ZERO" ]; then
+            echo "Skip commitlint: this push deleted the ref."
+            exit 0
+          fi
+          if [ "$COMMIT_FROM" = "$ZERO" ]; then
+            ROOT="$(git rev-list --max-count=1 --max-parents=0 "$COMMIT_TO")"
+            git log -1 --format=%B "$ROOT" | pnpm exec commitlint --verbose
+            if [ "$ROOT" != "$COMMIT_TO" ]; then
+              pnpm exec commitlint --from "$ROOT" --to "$COMMIT_TO" --verbose
+            fi
+          else
+            pnpm exec commitlint --from "$COMMIT_FROM" --to "$COMMIT_TO" --verbose
+          fi
