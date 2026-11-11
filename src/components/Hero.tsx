@@ -12,7 +12,7 @@ export function Hero() {
           <em>决胜瞬间</em>
         </h1>
         <p className="hero-description">
-          为 Xbox 手柄重新整理的《拳皇 97》出招表。选定角色，立刻开练。
+          以街机 A/B/C/D 记号整理的《拳皇 97》出招表。选定角色，立刻开练。
         </p>
         <a className="start-button" href="#roster">
           选择格斗家
@@ -42,8 +42,8 @@ export function Hero() {
           <span>招式收录</span>
         </div>
         <div>
-          <strong>XB</strong>
-          <span>手柄适配</span>
+          <strong>ABCD</strong>
+          <span>街机键位</span>
         </div>
       </div>
     </section>

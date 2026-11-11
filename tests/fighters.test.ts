@@ -10,7 +10,7 @@ const root = join(dirname(fileURLToPath(import.meta.url)), "..");
 const portraitsDir = join(root, "public/assets/portraits");
 
 const MOVE_CATEGORIES: readonly MoveCategory[] = ["special", "super", "throw"];
-const BUTTONS = new Set(["X", "Y", "A", "B"]);
+const BUTTONS = new Set(["A", "B", "C", "D"]);
 const DIRECTIONS = new Set(["↑", "↗", "→", "↘", "↓", "↙", "←", "↖"]);
 const MODIFIERS = new Set(["近身", "空中", "蓄力", "连按", "+", "·", "/"]);
 const COLOR_RE = /^#[0-9a-fA-F]{6}$/;

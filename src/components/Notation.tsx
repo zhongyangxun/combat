@@ -24,25 +24,25 @@ export function Notation() {
         </div>
         <div className="button-legend">
           <div className="legend-item">
-            <kbd className="xbox x">X</kbd>
+            <kbd className="arcade a">A</kbd>
             <span>
               <b>轻拳</b>轻攻击
             </span>
           </div>
           <div className="legend-item">
-            <kbd className="xbox a">A</kbd>
+            <kbd className="arcade b">B</kbd>
             <span>
               <b>轻脚</b>轻踢击
             </span>
           </div>
           <div className="legend-item">
-            <kbd className="xbox y">Y</kbd>
+            <kbd className="arcade c">C</kbd>
             <span>
               <b>重拳</b>重攻击
             </span>
           </div>
           <div className="legend-item">
-            <kbd className="xbox b">B</kbd>
+            <kbd className="arcade d">D</kbd>
             <span>
               <b>重脚</b>重踢击
             </span>
@@ -50,7 +50,7 @@ export function Notation() {
         </div>
       </div>
       <p className="notation-note">
-        <span>提示</span> “拳”代表 X 或 Y，“脚”代表 A 或 B；超必杀技通常需要至少 1 格能量。
+        <span>提示</span> “拳”代表 A 或 C，“脚”代表 B 或 D；超必杀技通常需要至少 1 格能量。
       </p>
     </section>
   );

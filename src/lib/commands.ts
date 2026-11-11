@@ -3,7 +3,7 @@ export type CommandToken =
   | { kind: "plus"; label: string }
   | { kind: "text"; label: string };
 
-const BUTTONS = new Set(["X", "Y", "A", "B"]);
+const BUTTONS = new Set(["A", "B", "C", "D"]);
 
 export function tokenizeCommand(command: string): CommandToken[] {
   const rawTokens = command.replaceAll("·", " · ").replaceAll("+", " + ").trim().split(/\s+/);
