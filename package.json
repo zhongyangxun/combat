@@ -3,7 +3,7 @@
   "version": "1.0.0",
   "private": true,
   "type": "module",
-  "description": "KOF '97 Xbox command list archive",
+  "description": "KOF '97 arcade A/B/C/D command list archive",
   "packageManager": "pnpm@12.18.0",
   "engines": {
     "node": ">=22.22.1"
