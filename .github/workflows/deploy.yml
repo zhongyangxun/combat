@@ -18,9 +18,18 @@ concurrency:
 jobs:
   build:
     runs-on: ubuntu-latest
+    env:
+      VITE_PUBLIC_CF_BEACON_TOKEN: ${{ vars.VITE_PUBLIC_CF_BEACON_TOKEN }}
     steps:
       - name: Checkout
         uses: actions/checkout@v7
+
+      - name: Require Cloudflare analytics token
+        run: |
+          if [ -z "$VITE_PUBLIC_CF_BEACON_TOKEN" ]; then
+            echo "VITE_PUBLIC_CF_BEACON_TOKEN is not set"
+            exit 1
+          fi
 
       - name: Install pnpm
         uses: pnpm/action-setup@v4
